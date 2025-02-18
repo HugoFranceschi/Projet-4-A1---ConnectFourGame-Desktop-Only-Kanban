@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	background-color: rgba(121, 69, 255, 1);
+	padding-top: 25px;
+	font-family: "Space Grotesk", serif;
+	font-weight: 700;
+}
+
+header {
+	width: 40%;
+}
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+.buttonViole {
+	background-color: rgba(92, 45, 213, 1);
+	border-radius: 50px;
+	padding: 10px 20px;
+	color: white;
+	border: none;
+}
+nav > img {
+	margin-left: 20px;
+}
+
+main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.resultat {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: 1fr;
+	width: 70%;
+}
+.font {
+	background-image: url(../assets/tableauNoir.svg);
+	border-radius: 40px;
+	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
+}
+.score {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: solid 2px rgba(0, 0, 0, 1);
+	border-radius: 20px;
+	background-color: white;
+	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
+	padding: 0px 27px;
+	padding-top: 35px;
+	position: relative;
+}
+.score > h2 {
+	font-size: 56px;
+}
+.score > img {
+	position: absolute;
+	bottom: 80%;
+}
+
+.choix {
+	display: grid;
+	justify-items: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr;
+}
+
+.temps {
+	z-index: 1;
+	position: absolute;
+	background-image: url(./assets/temps.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-size: 28%;
+	width: 100%;
+	height: 32%;
+	bottom: -20%;
+	justify-content: center;
+	padding-top: 27px;
+}
+.temps > h3 {
+	font-size: 56px;
+}
+
+.victoir {
+	z-index: 1;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 45%;
+	height: 28%;
+	bottom: -20%;
+	left: 28%;
+	justify-content: center;
+	background-color: white;
+	border: solid 2px black;
+	border-radius: 25px;
+}
+.victoir > h3 {
+	font-size: 56px;
+}
+.hover:hover {
+	background-color: rgba(255, 206, 103, 1);
+}
+
+.tout {
+	position: relative;
+}
+
+.jeux {
+	position: absolute;
+	top: 8.5%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	width: 98%;
+	height: 83%;
+	gap: 12px;
+	padding-left: 15px;
+}
+.jeux > button {
+	border-radius: 50px;
+	width: 95%;
+	height: 95%;
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* .jeux > button:hover {
+	background-color: rgba(253, 102, 135, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+} */
+/* .jeux > button > div {
+	border: solid 5px white;
+	border-radius: 50px;
+	padding: 11px 10px;
+} */
+
+.bas {
+	border-radius: 50px 50px 0px 0px;
+	width: 100%;
+	padding: 4%;
+}
+
+/* .couleur{
+	background-color: rgba(92, 45, 213, 1);
+} */
+.couleur {
+	background-color: rgba(255, 206, 103, 1);
+}
+
+.jeux > button:nth-child(13) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(13) > div {
+	border: solid 5px white;
+	border-radius: 50px;
+	padding: 11px 10px;
+}
+.jeux > button:nth-child(13) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(13) > div {
+	border: solid 5px white;
+	border-radius: 50px;
+	padding: 11px 10px;
+}
+.jeux > button:nth-child(20) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(20) > div {
+	border: solid 5px white;
+	border-radius: 50px;
+	padding: 11px 10px;
+}
+.jeux > button:nth-child(27) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(27) > div {
+	border: solid 5px white;
+	border-radius: 50px;
+	padding: 11px 10px;
+}
+.jeux > button:nth-child(32) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(34) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(34) > div {
+	border: solid 5px white;
+	border-radius: 50px;
+	padding: 11px 10px;
+}
+.jeux > button:nth-child(38) {
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+
+.jeux > button:nth-child(26) {
+	background-color: rgba(253, 102, 135, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(33) {
+	background-color: rgba(253, 102, 135, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(39) {
+	background-color: rgba(253, 102, 135, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(40) {
+	background-color: rgba(253, 102, 135, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}
+.jeux > button:nth-child(41) {
+	background-color: rgba(253, 102, 135, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+}

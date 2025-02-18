@@ -4,16 +4,18 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<link rel="stylesheet" href="reset.css" />
-		<link rel="stylesheet" href="normalize.css" />
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="./css/normalize.css" />
+		<link rel="stylesheet" href="./css/main.css" />
 	</head>
 	<body>
-		<nav>
-			<button>MENU</button>
-			<img src="./assets/4point.svg" alt="4point" />
-			<button>RESTART</button>
-		</nav>
+		<header>
+			<nav>
+				<button class="buttonViole">MENU</button>
+				<img src="./assets/4point.svg" alt="4point" />
+				<button class="buttonViole">RESTART</button>
+			</nav>
+		</header>
 		<main>
 			<div class="resultat">
 				<div class="score">
@@ -21,13 +23,80 @@
 					<p>PLAYER 1</p>
 					<h2 aria-live="polite">0</h2>
 				</div>
-				<img src="./assets/tableau.svg" alt="tableau" />
+				<div class="tout">
+					<div class="choix">
+						<div>
+							<img src="./assets/flècheDeCouleur.svg" alt="flècheDeCouleur" />
+						</div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<!-- <div class="temps">
+						<p>PLAYER 2’S TURN</p>
+						<h3>0s</h3>
+					</div> -->
+					<div class="victoir">
+						<p>PLAYER 2</p>
+						<h3>WINS</h3>
+						<button class="buttonViole hover">PLAY AGAIN</button>
+					</div>
+					<img class="font" src="./assets/tableau.svg" alt="tableau" />
+					<div class="jeux">
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+						<button><div></div></button>
+					</div>
+				</div>
 				<div class="score">
 					<img src="./assets/teteJaune.svg" alt="teteJaune" />
 					<p>PLAYER 2</p>
 					<h2 aria-live="polite">0</h2>
 				</div>
 			</div>
+			<div class="bas couleur"></div>
 		</main>
 	</body>
 	<script src="app.js"></script>

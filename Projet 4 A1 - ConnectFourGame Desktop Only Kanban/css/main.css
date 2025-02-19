@@ -241,3 +241,69 @@ main {
 	background-color: rgba(253, 102, 135, 1);
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
 }
+
+.fint {
+	font-weight: 100;
+}
+
+.regle > h2 {
+	font-size: 56px;
+}
+.regle > div > h3 {
+	color: rgba(121, 69, 255, 1);
+}
+.regle > div > p {
+	margin: 10px 0;
+}
+.regle {
+	overflow: visible;
+	position: absolute;
+	z-index: 1;
+	bottom: 17%;
+	border-radius: 25px;
+	border: solid 3px black;
+	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
+	width: 31%;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 35px;
+	margin: auto;
+	background-color: white;
+}
+
+.regle::backdrop {
+	background-color: blueviolet;
+}
+
+.regle[open] {
+	display: flex;
+}
+.regle > button {
+	position: absolute;
+	z-index: 5;
+	bottom: -8%;
+	display: flex;
+	justify-content: center;
+	width: 13%;
+	padding: 16px 0px;
+	border-radius: 50px;
+	background-color: rgba(253, 102, 135, 1);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+}
+.viole:hover {
+	border: solid 3px rgba(92, 45, 213, 1);
+	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
+}
+
+.centre {
+	text-align: center;
+}
+
+li::marker {
+	font-weight: 600;
+}
+
+li {
+	margin: 10px 0;
+}

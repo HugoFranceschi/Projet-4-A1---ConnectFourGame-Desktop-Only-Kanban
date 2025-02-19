@@ -278,10 +278,12 @@ main {
 .regle[open] {
 	display: flex;
 }
-.regle > button {
+.position {
 	position: absolute;
 	z-index: 5;
 	bottom: -8%;
+}
+.rouge {
 	display: flex;
 	justify-content: center;
 	width: 13%;
@@ -290,7 +292,27 @@ main {
 	background-color: rgba(253, 102, 135, 1);
 	border: solid 3px black;
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+	color: white;
 }
+.blanc {
+	border-radius: 50px;
+	background-color: rgb(255, 255, 255);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+}
+.jaune {
+	border-radius: 50px;
+	background-color: rgba(255, 206, 103, 1);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.width {
+	width: 90%;
+	padding: 15px 0;
+	border-radius: 15px;
+}
+
 .viole:hover {
 	border: solid 3px rgba(92, 45, 213, 1);
 	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
@@ -306,4 +328,37 @@ li::marker {
 
 li {
 	margin: 10px 0;
+}
+
+.pause > h2 {
+	color: white;
+	font-size: 56px;
+}
+.pause {
+	overflow: visible;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: 1;
+	bottom: 11%;
+	border-radius: 25px;
+	border: solid 3px black;
+	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
+	width: 20%;
+	gap: 10px;
+	background-color: rgba(121, 69, 255, 1);
+	justify-content: center;
+}
+.pause::backdrop {
+	background-color: rgba(0, 0, 0, 0.5);
+	/* overflow: hidden; a metre sur le body dans le JS*/
+}
+
+.acueil::backdrop {
+	background-color: blueviolet;
+}
+.acueil {
+	overflow: visible;
+	display: flex;
 }

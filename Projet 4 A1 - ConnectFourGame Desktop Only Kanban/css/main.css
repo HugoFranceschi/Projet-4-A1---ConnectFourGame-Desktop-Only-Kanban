@@ -272,7 +272,8 @@ main {
 }
 
 .regle::backdrop {
-	background-color: blueviolet;
+	background-color: rgba(92, 45, 213, 1);
+	/* overflow: hidden; a metre sur le body dans le JS*/
 }
 
 .regle[open] {
@@ -283,37 +284,36 @@ main {
 	z-index: 5;
 	bottom: -8%;
 }
-.rouge {
-	display: flex;
-	justify-content: center;
-	width: 13%;
-	padding: 16px 0px;
-	border-radius: 50px;
-	background-color: rgba(253, 102, 135, 1);
-	border: solid 3px black;
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
-	color: white;
-}
-.blanc {
-	border-radius: 50px;
-	background-color: rgb(255, 255, 255);
-	border: solid 3px black;
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
-}
-.jaune {
+
+.button1 {
 	border-radius: 50px;
 	background-color: rgba(255, 206, 103, 1);
 	border: solid 3px black;
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
-}
-
-.width {
 	width: 90%;
 	padding: 15px 0;
 	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px 10px;
 }
-
-.viole:hover {
+.button1:hover {
+	border: solid 3px rgba(92, 45, 213, 1);
+	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
+}
+.button2 {
+	border-radius: 50px;
+	background-color: rgb(255, 255, 255);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+	width: 90%;
+	padding: 15px 0;
+	border-radius: 15px;
+	display: flex;
+	padding: 18px 10px;
+}
+.button2:hover {
 	border: solid 3px rgba(92, 45, 213, 1);
 	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
 }
@@ -332,7 +332,7 @@ li {
 
 .pause > h2 {
 	color: white;
-	font-size: 56px;
+	font-size: 40px;
 }
 .pause {
 	overflow: visible;
@@ -355,10 +355,56 @@ li {
 	/* overflow: hidden; a metre sur le body dans le JS*/
 }
 
-.acueil::backdrop {
-	background-color: blueviolet;
+.accueil::backdrop {
+	background-color: rgba(92, 45, 213, 1);
+	/* overflow: hidden; a metre sur le body dans le JS*/
 }
-.acueil {
+.accueil {
 	overflow: visible;
+	position: absolute;
+	left: 35%;
+	top: 25%;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 25px;
+	gap: 50px;
+	width: 25%;
+	padding-top: 45px;
+	padding-bottom: 25px;
+	background-color: rgb(121, 69, 255);
+	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
+}
+.accueil > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 25px;
+	width: 100%;
+}
+
+.violeBlanc {
+	border-radius: 20px;
+	background-color: rgb(255, 255, 255);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+	width: 90%;
+	padding: 15px 0;
+}
+.violeRouge {
+	display: flex;
+	justify-content: center;
+	width: 13%;
+	border-radius: 20px;
+	background-color: rgba(253, 102, 135, 1);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+	color: white;
+	width: 90%;
+	padding: 15px 0;
+}
+.violeBlanc:hover,
+.violeRouge:hover {
+	border: solid 3px rgba(92, 45, 213, 1);
+	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
 }

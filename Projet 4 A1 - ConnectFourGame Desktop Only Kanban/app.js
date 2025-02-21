@@ -129,3 +129,6 @@ const grille = [
 
 var Score1 = 0;
 var Score2 = 0;
+var colonne = 0;
+var NonDuJoueur = "";
+var chronomètre = 30;

@@ -1,7 +1,9 @@
 const dialogPause = document.querySelector("dialog.pause");
 const dialogAcceuil = document.querySelector("dialog.accueil");
 const buttonRule = document.querySelector("button.button2");
-// dialogAcceuil.showModal();
+const bodyPage = document.querySelector("body.page");
+
+dialogAcceuil.showModal();
 
 function Regle() {
 	let dialogRegle = document.createElement("dialog");
@@ -48,7 +50,7 @@ function Regle() {
 	li4.textContent =
 		"The starter of the previous game goes second on the next game.";
 
-	buttonValider.classList.add("viole", "rouge", "position");
+	buttonValider.classList.add("violeRouge");
 
 	imgValider.src = "./assets/valide.svg";
 
@@ -74,12 +76,15 @@ function Regle() {
 
 	return dialogRegle;
 }
-// buttonRule.addEventListener("click", () => {
-// 	let regle = Regle();
-// 	document.body.appendChild(regle);
-// 	regle.showModal();
-// });
+buttonRule.addEventListener("click", () => {
+	let regle = Regle();
+	document.body.appendChild(regle);
+	regle.showModal();
+});
 
+let h2J1 = document.querySelector("h2.J1");
+let h2J2 = document.querySelector("h2.J2");
+let h3SpanSec = document.querySelector("span");
 const buttonMenu = document.querySelector("button.buttonViole");
 function Pause() {
 	let dialogPause = document.createElement("dialog");
@@ -99,7 +104,7 @@ function Pause() {
 	buttonRestart.classList.add("violeBlanc");
 
 	buttonQuit.textContent = "QUIT GAME";
-	buttonQuit.classList.add("violeRouge");
+	buttonQuit.classList.add("violeRougeWidth");
 
 	dialogPause.appendChild(h2Pause);
 	dialogPause.appendChild(buttonContinue);
@@ -108,11 +113,31 @@ function Pause() {
 
 	buttonContinue.addEventListener("click", () => {
 		dialogPause.remove();
+		bodyPage.classList.remove("regle");
+		bodyPage.classList.remove("page");
+	});
+	buttonRestart.addEventListener("click", () => {
+		h3SpanSec.textContent = 15;
+		h2J1.textContent = 0;
+		h2J2.textContent = 0;
+		dialogPause.remove();
+		bodyPage.classList.remove("regle");
+		bodyPage.classList.remove("page");
+	});
+	buttonQuit.addEventListener("click", () => {
+		h3SpanSec.textContent = 15;
+		h2J1.textContent = 0;
+		h2J2.textContent = 0;
+		dialogPause.remove();
+		dialogAcceuil.showModal();
+		bodyPage.classList.remove("regle");
 	});
 
 	return dialogPause;
 }
 buttonMenu.addEventListener("click", () => {
+	bodyPage.classList.remove("regle");
+	bodyPage.classList.add("page");
 	let pause = Pause();
 	document.body.appendChild(pause);
 	pause.showModal();
@@ -130,7 +155,7 @@ var Score1 = 0;
 var Score2 = 0;
 var colonne = 0;
 var NonDuJoueur = "";
-var chronomètre = 30;
+var chronomètre = 15;
 
 const grilleAvecGagnant1 = [
 	["", "", "", "", "", "", ""],
@@ -178,14 +203,59 @@ const grilleSansGagnant = [
 ];
 
 function checkWinner(grille) {
-	let tableau = grille[5][0];
-	console.log(tableau);
+	const grilleLength = grille.length;
+	const grillehup = grille[0].length;
+	const directions = [
+		[0, 1],
+		[1, 0],
+		[1, 1],
+		[-1, 1],
+	];
+
+	for (let [d1, d2] of directions) {
+		for (let i = 0; i < grilleLength; i++) {
+			for (let h = 0; h < grillehup; h++) {
+				const target = grille[i][h];
+				if (target !== "") {
+					for (let j = 1; j < 4; j++) {
+						const I = i + j * d1;
+						const H = h + j * d2;
+						if (I < 0 || I >= grilleLength || H < 0 || H >= grillehup) {
+							break;
+						}
+						if (grille[I][H] !== target) {
+							break;
+						}
+						if (j == 3) {
+							return target;
+						}
+					}
+				}
+			}
+		}
+	}
+	return "";
 }
 
 let resultat = "";
 
 resultat = checkWinner(grilleAvecGagnant1); // retourne "X"
+console.log(resultat);
+
 resultat = checkWinner(grilleAvecGagnant2); // retourne "X"
+console.log(resultat);
+
 resultat = checkWinner(grilleAvecGagnant3); // retourne "X"
+console.log(resultat);
+
 resultat = checkWinner(grilleAvecGagnant4); // retourne "O"
+console.log(resultat);
+
 resultat = checkWinner(grilleSansGagnant); // retourne ""
+console.log(resultat);
+
+const buttonPlay = document.querySelector("button.button1");
+buttonPlay.addEventListener("click", () => {
+	dialogAcceuil.close();
+	bodyPage.classList.remove("page");
+});

@@ -10,6 +10,9 @@ body {
 	font-family: "Space Grotesk", serif;
 	font-weight: 700;
 }
+.page {
+	overflow: hidden;
+}
 
 header {
 	width: 40%;
@@ -81,7 +84,7 @@ main {
 .temps {
 	z-index: 1;
 	position: absolute;
-	background-image: url(./assets/temps.svg);
+	background-image: url(../assets/temps.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 	display: flex;
@@ -91,6 +94,7 @@ main {
 	width: 100%;
 	height: 32%;
 	bottom: -20%;
+	right: 0%;
 	justify-content: center;
 	padding-top: 27px;
 }
@@ -160,87 +164,12 @@ main {
 	padding: 4%;
 }
 
-/* .couleur{
-	background-color: rgba(92, 45, 213, 1);
-} */
 .couleur {
+	background-color: rgba(92, 45, 213, 1);
+}
+/* .couleur {
 	background-color: rgba(255, 206, 103, 1);
-}
-
-.jeux > button:nth-child(13) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(13) > div {
-	border: solid 5px white;
-	border-radius: 50px;
-	padding: 11px 10px;
-}
-.jeux > button:nth-child(13) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(13) > div {
-	border: solid 5px white;
-	border-radius: 50px;
-	padding: 11px 10px;
-}
-.jeux > button:nth-child(20) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(20) > div {
-	border: solid 5px white;
-	border-radius: 50px;
-	padding: 11px 10px;
-}
-.jeux > button:nth-child(27) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(27) > div {
-	border: solid 5px white;
-	border-radius: 50px;
-	padding: 11px 10px;
-}
-.jeux > button:nth-child(32) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(34) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(34) > div {
-	border: solid 5px white;
-	border-radius: 50px;
-	padding: 11px 10px;
-}
-.jeux > button:nth-child(38) {
-	background-color: rgba(255, 206, 103, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-
-.jeux > button:nth-child(26) {
-	background-color: rgba(253, 102, 135, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(33) {
-	background-color: rgba(253, 102, 135, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(39) {
-	background-color: rgba(253, 102, 135, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(40) {
-	background-color: rgba(253, 102, 135, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
-.jeux > button:nth-child(41) {
-	background-color: rgba(253, 102, 135, 1);
-	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-}
+} */
 
 .fint {
 	font-weight: 100;
@@ -259,7 +188,7 @@ main {
 	overflow: visible;
 	position: absolute;
 	z-index: 1;
-	bottom: 17%;
+	bottom: 0%;
 	border-radius: 25px;
 	border: solid 3px black;
 	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
@@ -286,12 +215,10 @@ main {
 }
 
 .button1 {
-	border-radius: 50px;
 	background-color: rgba(255, 206, 103, 1);
 	border: solid 3px black;
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
 	width: 90%;
-	padding: 15px 0;
 	border-radius: 15px;
 	display: flex;
 	align-items: center;
@@ -362,9 +289,9 @@ li {
 .accueil {
 	overflow: visible;
 	position: absolute;
-	left: 35%;
+	z-index: 2;
+	left: 37.5%;
 	top: 25%;
-	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border-radius: 25px;
@@ -374,6 +301,9 @@ li {
 	padding-bottom: 25px;
 	background-color: rgb(121, 69, 255);
 	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 1);
+}
+.accueil[open] {
+	display: flex;
 }
 .accueil > div {
 	display: flex;
@@ -395,16 +325,29 @@ li {
 	display: flex;
 	justify-content: center;
 	width: 13%;
+	border-radius: 30px;
+	background-color: rgba(253, 102, 135, 1);
+	border: solid 3px black;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
+	color: white;
+	padding: 16px 0;
+	position: absolute;
+	bottom: -7%;
+}
+.violeRougeWidth {
+	display: flex;
+	justify-content: center;
+	width: 90%;
 	border-radius: 20px;
 	background-color: rgba(253, 102, 135, 1);
 	border: solid 3px black;
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 1);
 	color: white;
-	width: 90%;
 	padding: 15px 0;
 }
 .violeBlanc:hover,
-.violeRouge:hover {
+.violeRouge:hover,
+.violeRougeWidth:hover {
 	border: solid 3px rgba(92, 45, 213, 1);
 	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
 }

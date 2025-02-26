@@ -1,3 +1,7 @@
+let a = 15;
+
+let timeur = 0;
+
 const dialogPause = document.querySelector("dialog.pause");
 const dialogAcceuil = document.querySelector("dialog.accueil");
 const buttonRule = document.querySelector("button.button2");
@@ -84,7 +88,7 @@ buttonRule.addEventListener("click", () => {
 
 let h2J1 = document.querySelector("h2.J1");
 let h2J2 = document.querySelector("h2.J2");
-let h3SpanSec = document.querySelector("span");
+let h3SpanSec = document.querySelector("span.time");
 const buttonMenu = document.querySelector("button.buttonViole");
 function Pause() {
 	let dialogPause = document.createElement("dialog");
@@ -123,6 +127,8 @@ function Pause() {
 		dialogPause.remove();
 		bodyPage.classList.remove("regle");
 		bodyPage.classList.remove("page");
+
+		debut();
 	});
 	buttonQuit.addEventListener("click", () => {
 		h3SpanSec.textContent = 15;
@@ -131,6 +137,9 @@ function Pause() {
 		dialogPause.remove();
 		dialogAcceuil.showModal();
 		bodyPage.classList.remove("regle");
+
+		clearInterval(timeur);
+		a = 15;
 	});
 
 	return dialogPause;
@@ -258,4 +267,23 @@ const buttonPlay = document.querySelector("button.button1");
 buttonPlay.addEventListener("click", () => {
 	dialogAcceuil.close();
 	bodyPage.classList.remove("page");
+	debut();
 });
+
+let pSpanPlay = document.querySelector("span.player");
+
+function flashText() {
+	console.log(a);
+	a--;
+	h3SpanSec.textContent = a;
+	if (a == 0) {
+		clearInterval(timeur);
+	}
+}
+function debut() {
+	clearInterval(timeur);
+
+	a = 15;
+
+	timeur = setInterval(flashText, 1000);
+}

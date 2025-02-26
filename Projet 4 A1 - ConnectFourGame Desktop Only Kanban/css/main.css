@@ -84,7 +84,7 @@ main {
 .temps {
 	z-index: 1;
 	position: absolute;
-	background-image: url(../assets/temps.svg);
+	background-image: url(../assets/tempsCouleurRouge.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 	display: flex;
@@ -100,6 +100,9 @@ main {
 }
 .temps > h3 {
 	font-size: 56px;
+}
+.tour {
+	background-image: url(../assets/temps.svg);
 }
 
 .victoir {
@@ -167,9 +170,6 @@ main {
 .couleur {
 	background-color: rgba(92, 45, 213, 1);
 }
-/* .couleur {
-	background-color: rgba(255, 206, 103, 1);
-} */
 
 .fint {
 	font-weight: 100;
@@ -202,7 +202,6 @@ main {
 
 .regle::backdrop {
 	background-color: rgba(92, 45, 213, 1);
-	/* overflow: hidden; a metre sur le body dans le JS*/
 }
 
 .regle[open] {
@@ -350,4 +349,8 @@ li {
 .violeRougeWidth:hover {
 	border: solid 3px rgba(92, 45, 213, 1);
 	box-shadow: 0px 5px 0px 0px rgba(92, 45, 213, 1);
+}
+
+.blanc {
+	color: white;
 }

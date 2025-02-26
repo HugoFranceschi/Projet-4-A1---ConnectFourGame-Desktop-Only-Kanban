@@ -1,5 +1,5 @@
 let a = 15;
-
+let joueur = 1;
 let timeur = 0;
 
 const dialogPause = document.querySelector("dialog.pause");
@@ -129,6 +129,11 @@ function Pause() {
 		bodyPage.classList.remove("page");
 
 		debut();
+		joueur = 1;
+		h3Blanc.classList.add("blanc");
+		pBlanc.classList.add("blanc");
+		imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+		divTemps.classList.remove("tour");
 	});
 	buttonQuit.addEventListener("click", () => {
 		h3SpanSec.textContent = 15;
@@ -140,6 +145,11 @@ function Pause() {
 
 		clearInterval(timeur);
 		a = 15;
+		joueur = 1;
+		h3Blanc.classList.add("blanc");
+		pBlanc.classList.add("blanc");
+		imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+		divTemps.classList.remove("tour");
 	});
 
 	return dialogPause;
@@ -271,19 +281,112 @@ buttonPlay.addEventListener("click", () => {
 });
 
 let pSpanPlay = document.querySelector("span.player");
+let h3Blanc = document.querySelector("h3.blanc");
+let pBlanc = document.querySelector("p.blanc");
+let imgFleche = document.querySelector("img.fleche");
+let divTemps = document.querySelector("div.temps");
 
 function flashText() {
 	console.log(a);
 	a--;
+	pSpanPlay.textContent = joueur;
 	h3SpanSec.textContent = a;
 	if (a == 0) {
 		clearInterval(timeur);
+		debut();
+		if (joueur == 1) {
+			joueur++;
+			h3Blanc.classList.remove("blanc");
+			pBlanc.classList.remove("blanc");
+			imgFleche.src = "./assets/flècheDeCouleur.svg";
+			divTemps.classList.add("tour");
+		} else {
+			joueur--;
+			h3Blanc.classList.add("blanc");
+			pBlanc.classList.add("blanc");
+			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+			divTemps.classList.remove("tour");
+		}
 	}
 }
 function debut() {
+	pSpanPlay.textContent = 1;
 	clearInterval(timeur);
 
 	a = 15;
 
 	timeur = setInterval(flashText, 1000);
+}
+
+GrideGameDiv = [];
+GrideGameGrid = [];
+
+for (let i = 0; i < 6; i++) {
+	GrideGameDiv.push([]);
+	GrideGameGrid.push([]);
+}
+
+let divChoix = document.querySelector("div.choix");
+addEventListener("keydown", (e) => {
+	if (e.key == "ArrowRight") {
+		if (colonne < 6) {
+			colonne++;
+			imgFleche.remove();
+			imgFleche = document.createElement("img");
+			imgFleche.classList.add("fleche");
+			if (joueur == 1) {
+				imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+			} else {
+				imgFleche.src = "./assets/flècheDeCouleur.svg";
+			}
+			imgFleche.alt = "flècheDeCouleur";
+			let choix = document.querySelectorAll(".choix > div");
+			choix[colonne].appendChild(imgFleche);
+		}
+	}
+	if (e.key == "ArrowLeft") {
+		if (colonne > 0) {
+			colonne--;
+			imgFleche.remove();
+			imgFleche = document.createElement("img");
+			imgFleche.classList.add("fleche");
+			if (joueur == 1) {
+				imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+			} else {
+				imgFleche.src = "./assets/flècheDeCouleur.svg";
+			}
+			imgFleche.alt = "flècheDeCouleur";
+			let choix = document.querySelectorAll(".choix > div");
+			choix[colonne].appendChild(imgFleche);
+		}
+	}
+});
+
+let space = 0;
+
+function setupGride() {
+	GrideGameDiv = [];
+	GrideGameGrid = [];
+
+	for (let i = 0; i < 6; i++) {
+		GrideGameDiv.push([]);
+		GrideGameGrid.push([]);
+	}
+
+	let space = 0;
+
+	for (let i = 0; i < 42; i++) {
+		if (space === 6) {
+			space = 0;
+		}
+
+		GrideGameGrid[space].push("");
+
+		GrideGameDiv[space].push(grideDiv[i]);
+
+		GrideGameDiv[space][GrideGameDiv[space].length - 1].style.backgroundColor =
+			"#7945ff";
+
+		space++;
+	}
 }

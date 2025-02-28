@@ -158,6 +158,7 @@ function Pause() {
 		debut();
 		AGagner = false;
 		couDuJouer = [5, 5, 5, 5, 5, 5, 5];
+		document.querySelector(".victoir")?.remove();
 	});
 	buttonQuit.addEventListener("click", () => {
 		h3SpanSec.textContent = 15;
@@ -195,6 +196,7 @@ function Pause() {
 		debut();
 		AGagner = false;
 		couDuJouer = [5, 5, 5, 5, 5, 5, 5];
+		document.querySelector(".victoir")?.remove();
 	});
 
 	return dialogPause;
@@ -344,7 +346,7 @@ function flashText() {
 			joueur++;
 			h3Blanc.classList.remove("blanc");
 			pBlanc.classList.remove("blanc");
-			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+			imgFleche.src = "./assets/flècheDeCouleur.svg";
 
 			divTemps.classList.add("tour");
 		} else {
@@ -352,7 +354,7 @@ function flashText() {
 			h3Blanc.classList.add("blanc");
 			pBlanc.classList.add("blanc");
 			divTemps.classList.remove("tour");
-			imgFleche.src = "./assets/flècheDeCouleur.svg";
+			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
 		}
 	}
 }
@@ -416,7 +418,7 @@ addEventListener("keydown", (e) => {
 			pBlanc.classList.add("blanc");
 			imgFleche.src = "./assets/flècheDeCouleur.svg";
 
-			divTemps.classList.remove("tour");
+			divTemps.classList.add("tour");
 			jetonCouleur.classList.add("couleurRouge");
 			jetonCouleur.classList.remove("couleur");
 			debut();
@@ -427,7 +429,7 @@ addEventListener("keydown", (e) => {
 
 			h3Blanc.classList.remove("blanc");
 			pBlanc.classList.remove("blanc");
-			divTemps.classList.add("tour");
+			divTemps.classList.remove("tour");
 			jetonCouleur.classList.add("couleurJaune");
 			jetonCouleur.classList.remove("couleur");
 			joueur--;
@@ -436,7 +438,10 @@ addEventListener("keydown", (e) => {
 		}
 		couDuJouer[colonne] = couDuJouer[colonne] - 1;
 		console.log(checkWinner(grille));
-		bodyPage.appendChild(victoire());
+		let resultatVictoire = victoire();
+		if (resultatVictoire != null) {
+			bodyPage.appendChild(victoire());
+		}
 	}
 });
 
@@ -464,7 +469,7 @@ function victoire() {
 
 		AGagner = true;
 
-		h2J1.textContent = Number(h2J1.textContent) + 1;
+		h2J1.textContent = Number(h2J1.textContent) + 0.5;
 
 		buttonViole.addEventListener("click", () => {
 			grille = [
@@ -510,7 +515,7 @@ function victoire() {
 
 		AGagner = true;
 
-		h2J2.textContent = Number(h2J2.textContent) + 1;
+		h2J2.textContent = Number(h2J2.textContent) + 0.5;
 
 		buttonViole.addEventListener("click", () => {
 			grille = [
@@ -536,5 +541,7 @@ function victoire() {
 		});
 
 		return divVictoire;
+	} else {
+		return null;
 	}
 }

@@ -1,6 +1,7 @@
 let a = 15;
 let joueur = 1;
 let timeur = 0;
+let couDuJouer = [5, 5, 5, 5, 5, 5, 5];
 
 const dialogPause = document.querySelector("dialog.pause");
 const dialogAcceuil = document.querySelector("dialog.accueil");
@@ -298,14 +299,15 @@ function flashText() {
 			joueur++;
 			h3Blanc.classList.remove("blanc");
 			pBlanc.classList.remove("blanc");
-			imgFleche.src = "./assets/flècheDeCouleur.svg";
+			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+
 			divTemps.classList.add("tour");
 		} else {
 			joueur--;
 			h3Blanc.classList.add("blanc");
 			pBlanc.classList.add("blanc");
-			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
 			divTemps.classList.remove("tour");
+			imgFleche.src = "./assets/flècheDeCouleur.svg";
 		}
 	}
 }
@@ -319,12 +321,12 @@ function debut() {
 }
 
 let divJeux = document.querySelectorAll("div.jeux");
+let divColone = document.querySelectorAll("div.colone");
 let divRong = document.querySelector("div");
 let buttonRong = document.querySelector("button.couleur");
 
 let divChoix = document.querySelector("div.choix");
 addEventListener("keydown", (e) => {
-	setupGride();
 	if (e.key == "ArrowRight") {
 		if (colonne < 6) {
 			colonne++;
@@ -358,40 +360,29 @@ addEventListener("keydown", (e) => {
 		}
 	}
 	if (e.key == " ") {
-		bodyPage.classList.add("page");
-		for (let i = 0; i < 7; i++) {
-			if (colonne == i) {
-				console.log("hcuehc");
+		let jeton = divColone[colonne];
+		let jetonCouleur = jeton.children[couDuJouer[colonne]];
+		couDuJouer[colonne] = couDuJouer[colonne] - 1;
+		if (joueur == 1) {
+			h3Blanc.classList.add("blanc");
+			pBlanc.classList.add("blanc");
+			imgFleche.src = "./assets/flècheDeCouleur.svg";
 
-				buttonRong.classList.remove("couleur");
-				buttonRong.classList.add("couleurRouge");
-			}
+			divTemps.classList.remove("tour");
+			jetonCouleur.classList.add("couleurRouge");
+			jetonCouleur.classList.remove("couleur");
+			debut();
+			joueur++;
+		} else {
+			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
+
+			h3Blanc.classList.remove("blanc");
+			pBlanc.classList.remove("blanc");
+			divTemps.classList.add("tour");
+			jetonCouleur.classList.add("couleurJaune");
+			jetonCouleur.classList.remove("couleur");
+			joueur--;
+			debut();
 		}
 	}
 });
-
-let GrideGameDiv = [];
-let GrideGameGrid = [];
-function setupGride() {
-	GrideGameDiv = [];
-	GrideGameGrid = [];
-
-	for (let i = 0; i < 6; i++) {
-		GrideGameDiv.push([]);
-		GrideGameGrid.push([]);
-	}
-
-	let space = 0;
-
-	for (let i = 0; i < 42; i++) {
-		if (space == 6) {
-			space = 0;
-		}
-
-		GrideGameGrid[space].push("");
-
-		GrideGameDiv[space].push(divJeux[i]);
-
-		space++;
-	}
-}

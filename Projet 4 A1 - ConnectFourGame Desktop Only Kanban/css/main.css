@@ -142,12 +142,22 @@ main {
 	gap: 12px;
 	padding-left: 15px;
 }
+.colone {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.colone > .couleur {
+	margin-bottom: 11px;
+	height: 75%;
+	background-color: transparent;
+}
 .couleur {
 	z-index: -1;
 	border-radius: 50px;
 	width: 95%;
 	height: 95%;
-	background-color: transparent;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -157,11 +167,26 @@ main {
 	background-color: rgba(253, 102, 135, 1);
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
 	border-radius: 50px;
+	margin-bottom: 10px;
 	width: 95%;
-	height: 95%;
+	height: 75%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 11px;
+}
+.couleurJaune {
+	z-index: 0;
+	background-color: rgba(255, 206, 103, 1);
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
+	border-radius: 50px;
+	margin-bottom: 10px;
+	width: 95%;
+	height: 75%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 11px;
 }
 /* .jeux > button > div {
 	border: solid 5px white;
@@ -173,10 +198,6 @@ main {
 	border-radius: 50px 50px 0px 0px;
 	width: 100%;
 	padding: 4%;
-}
-
-.couleur {
-	background-color: rgba(92, 45, 213, 1);
 }
 
 .fint {

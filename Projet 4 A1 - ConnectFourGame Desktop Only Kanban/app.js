@@ -2,6 +2,7 @@ let a = 15;
 let joueur = 1;
 let timeur = 0;
 let couDuJouer = [5, 5, 5, 5, 5, 5, 5];
+let AGagner = false;
 
 const dialogPause = document.querySelector("dialog.pause");
 const dialogAcceuil = document.querySelector("dialog.accueil");
@@ -128,6 +129,8 @@ function Pause() {
 		dialogPause.remove();
 		bodyPage.classList.remove("regle");
 		bodyPage.classList.remove("page");
+		h2J1.textContent = 0;
+		h2J2.textContent = 0;
 
 		debut();
 		joueur = 1;
@@ -135,6 +138,26 @@ function Pause() {
 		pBlanc.classList.add("blanc");
 		imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
 		divTemps.classList.remove("tour");
+
+		grille = [
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+		];
+
+		for (let i of divColone) {
+			for (let button of i.children) {
+				button.className = "couleur";
+			}
+		}
+		clearInterval(timeur);
+		debut();
+		AGagner = false;
+		couDuJouer = [5, 5, 5, 5, 5, 5, 5];
 	});
 	buttonQuit.addEventListener("click", () => {
 		h3SpanSec.textContent = 15;
@@ -143,14 +166,35 @@ function Pause() {
 		dialogPause.remove();
 		dialogAcceuil.showModal();
 		bodyPage.classList.remove("regle");
+		h2J1.textContent = 0;
+		h2J2.textContent = 0;
 
 		clearInterval(timeur);
 		a = 15;
 		joueur = 1;
 		h3Blanc.classList.add("blanc");
 		pBlanc.classList.add("blanc");
-		imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
 		divTemps.classList.remove("tour");
+
+		grille = [
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+			["", "", "", "", "", ""],
+		];
+
+		for (let i of divColone) {
+			for (let button of i.children) {
+				button.className = "couleur";
+			}
+		}
+		clearInterval(timeur);
+		debut();
+		AGagner = false;
+		couDuJouer = [5, 5, 5, 5, 5, 5, 5];
 	});
 
 	return dialogPause;
@@ -163,13 +207,14 @@ buttonMenu.addEventListener("click", () => {
 	pause.showModal();
 });
 
-const grille = [
-	["", "", "", "", "", "", ""],
-	["", "", "", "", "", "", ""],
-	["", "", "", "", "", "", ""],
-	["", "", "", "", "", "", ""],
-	["", "", "", "", "", "", ""],
-	["", "", "", "", "", "", ""],
+let grille = [
+	["", "", "", "", "", ""],
+	["", "", "", "", "", ""],
+	["", "", "", "", "", ""],
+	["", "", "", "", "", ""],
+	["", "", "", "", "", ""],
+	["", "", "", "", "", ""],
+	["", "", "", "", "", ""],
 ];
 var Score1 = 0;
 var Score2 = 0;
@@ -327,6 +372,10 @@ let buttonRong = document.querySelector("button.couleur");
 
 let divChoix = document.querySelector("div.choix");
 addEventListener("keydown", (e) => {
+	if (AGagner == true) {
+		return;
+	}
+	grille[colonne][couDuJouer[colonne]];
 	if (e.key == "ArrowRight") {
 		if (colonne < 6) {
 			colonne++;
@@ -362,7 +411,6 @@ addEventListener("keydown", (e) => {
 	if (e.key == " ") {
 		let jeton = divColone[colonne];
 		let jetonCouleur = jeton.children[couDuJouer[colonne]];
-		couDuJouer[colonne] = couDuJouer[colonne] - 1;
 		if (joueur == 1) {
 			h3Blanc.classList.add("blanc");
 			pBlanc.classList.add("blanc");
@@ -373,6 +421,7 @@ addEventListener("keydown", (e) => {
 			jetonCouleur.classList.remove("couleur");
 			debut();
 			joueur++;
+			grille[colonne][couDuJouer[colonne]] = "X";
 		} else {
 			imgFleche.src = "./assets/flècheDeCouleurRouge.svg";
 
@@ -383,6 +432,109 @@ addEventListener("keydown", (e) => {
 			jetonCouleur.classList.remove("couleur");
 			joueur--;
 			debut();
+			grille[colonne][couDuJouer[colonne]] = "O";
 		}
+		couDuJouer[colonne] = couDuJouer[colonne] - 1;
+		console.log(checkWinner(grille));
+		bodyPage.appendChild(victoire());
 	}
 });
+
+function victoire() {
+	let h2J1 = document.querySelector("h2.J1");
+	let h2J2 = document.querySelector("h2.J2");
+
+	if (checkWinner(grille) == "X") {
+		let divVictoire = document.createElement("div");
+		divVictoire.classList.add("victoir");
+
+		let pJoueur = document.createElement("p");
+		pJoueur.textContent = "PLAYER 1";
+
+		let pWINS = document.createElement("p");
+		pWINS.textContent = "WINS";
+
+		let buttonViole = document.createElement("button");
+		buttonViole.textContent = "PLAY AGAIN";
+		buttonViole.classList.add("buttonViole", "rouge");
+
+		divVictoire.appendChild(pJoueur);
+		divVictoire.appendChild(pWINS);
+		divVictoire.appendChild(buttonViole);
+
+		AGagner = true;
+
+		h2J1.textContent = Number(h2J1.textContent) + 1;
+
+		buttonViole.addEventListener("click", () => {
+			grille = [
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+			];
+
+			for (let i of divColone) {
+				for (let button of i.children) {
+					button.className = "couleur";
+				}
+			}
+			clearInterval(timeur);
+			debut();
+			divVictoire.remove();
+			AGagner = false;
+			couDuJouer = [5, 5, 5, 5, 5, 5, 5];
+		});
+
+		return divVictoire;
+	} else if (checkWinner(grille) == "O") {
+		let divVictoire = document.createElement("div");
+		divVictoire.classList.add("victoir");
+
+		let pJoueur = document.createElement("p");
+		pJoueur.textContent = "PLAYER 2";
+
+		let pWINS = document.createElement("p");
+		pWINS.textContent = "WINS";
+
+		let buttonViole = document.createElement("button");
+		buttonViole.textContent = "PLAY AGAIN";
+		buttonViole.classList.add("buttonViole", "jaune");
+
+		divVictoire.appendChild(pJoueur);
+		divVictoire.appendChild(pWINS);
+		divVictoire.appendChild(buttonViole);
+
+		AGagner = true;
+
+		h2J2.textContent = Number(h2J2.textContent) + 1;
+
+		buttonViole.addEventListener("click", () => {
+			grille = [
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+				["", "", "", "", "", ""],
+			];
+
+			for (let i of divColone) {
+				for (let button of i.children) {
+					button.className = "couleur";
+				}
+			}
+			clearInterval(timeur);
+			debut();
+			divVictoire.remove();
+			AGagner = false;
+			couDuJouer = [5, 5, 5, 5, 5, 5, 5];
+		});
+
+		return divVictoire;
+	}
+}

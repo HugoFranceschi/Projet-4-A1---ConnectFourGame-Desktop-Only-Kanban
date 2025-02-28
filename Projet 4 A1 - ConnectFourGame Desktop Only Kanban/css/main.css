@@ -111,10 +111,10 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 45%;
-	height: 28%;
-	bottom: -20%;
-	left: 28%;
+	width: 15%;
+	height: 24%;
+	bottom: -14%;
+	left: 42.5%;
 	justify-content: center;
 	background-color: white;
 	border: solid 2px black;
@@ -123,7 +123,10 @@ main {
 .victoir > h3 {
 	font-size: 56px;
 }
-.hover:hover {
+.rouge:hover {
+	background-color: rgba(253, 102, 135, 1);
+}
+.jaune:hover {
 	background-color: rgba(255, 206, 103, 1);
 }
 

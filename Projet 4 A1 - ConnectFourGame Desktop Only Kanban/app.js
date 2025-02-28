@@ -318,16 +318,13 @@ function debut() {
 	timeur = setInterval(flashText, 1000);
 }
 
-GrideGameDiv = [];
-GrideGameGrid = [];
-
-for (let i = 0; i < 6; i++) {
-	GrideGameDiv.push([]);
-	GrideGameGrid.push([]);
-}
+let divJeux = document.querySelectorAll("div.jeux");
+let divRong = document.querySelector("div");
+let buttonRong = document.querySelector("button.couleur");
 
 let divChoix = document.querySelector("div.choix");
 addEventListener("keydown", (e) => {
+	setupGride();
 	if (e.key == "ArrowRight") {
 		if (colonne < 6) {
 			colonne++;
@@ -360,10 +357,21 @@ addEventListener("keydown", (e) => {
 			choix[colonne].appendChild(imgFleche);
 		}
 	}
+	if (e.key == " ") {
+		bodyPage.classList.add("page");
+		for (let i = 0; i < 7; i++) {
+			if (colonne == i) {
+				console.log("hcuehc");
+
+				buttonRong.classList.remove("couleur");
+				buttonRong.classList.add("couleurRouge");
+			}
+		}
+	}
 });
 
-let space = 0;
-
+let GrideGameDiv = [];
+let GrideGameGrid = [];
 function setupGride() {
 	GrideGameDiv = [];
 	GrideGameGrid = [];
@@ -376,16 +384,13 @@ function setupGride() {
 	let space = 0;
 
 	for (let i = 0; i < 42; i++) {
-		if (space === 6) {
+		if (space == 6) {
 			space = 0;
 		}
 
 		GrideGameGrid[space].push("");
 
-		GrideGameDiv[space].push(grideDiv[i]);
-
-		GrideGameDiv[space][GrideGameDiv[space].length - 1].style.backgroundColor =
-			"#7945ff";
+		GrideGameDiv[space].push(divJeux[i]);
 
 		space++;
 	}

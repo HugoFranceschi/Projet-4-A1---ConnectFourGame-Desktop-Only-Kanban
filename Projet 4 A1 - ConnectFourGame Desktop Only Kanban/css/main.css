@@ -142,7 +142,8 @@ main {
 	gap: 12px;
 	padding-left: 15px;
 }
-.jeux > button {
+.couleur {
+	z-index: -1;
 	border-radius: 50px;
 	width: 95%;
 	height: 95%;
@@ -151,10 +152,17 @@ main {
 	justify-content: center;
 	align-items: center;
 }
-/* .jeux > button:hover {
+.couleurRouge {
+	z-index: 0;
 	background-color: rgba(253, 102, 135, 1);
 	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5) inset;
-} */
+	border-radius: 50px;
+	width: 95%;
+	height: 95%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 /* .jeux > button > div {
 	border: solid 5px white;
 	border-radius: 50px;
